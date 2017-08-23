@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# File: myutils.py
+# Author: Rafał Nowak <rafal.nowak@cs.uni.wroc.pl>
+
 import os
 import logging
 import tarfile
