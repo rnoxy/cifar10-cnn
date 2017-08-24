@@ -28,7 +28,7 @@ def read_CIFAR_files(filenames):
     Keyword arguments:
     filenames -- the list of filenames (strings)
     """
-    dataSet = [] # dataset to be returned
+    dataset = [] # dataset to be returned
     for file in filenames:
         with open(file, 'rb') as fo:
             _dict = pickle.load(fo, encoding='bytes')
@@ -61,9 +61,12 @@ def read_CIFAR_files(filenames):
             #                                                1 2 0
             image = np.transpose(image, [1, 2, 0])
             # img[x,y,:] is array [R,G,B]
-            dataSet.append([image, labels[k]])
-    return dataSet
+            dataset.append([image, labels[k]])
+    return dataset
 
+def load_CIFAR_classnames():
+    """Return the names of consecutive classes in CIFAR10 database"""
+    return ['plane','auto','bird','cat','deer','dog','frog','horse','ship','truck']
 
 def load_CIFAR_dataset(shuffle=True):
     """
