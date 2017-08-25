@@ -27,6 +27,4 @@ Finally we used [LinearSVC](http://scikit-learn.org/stable/modules/generated/skl
 The final score is about **49.13%**. Thus we correctly classify about the half of the testing images.
 We tried to <tt>SVC(kernel='linear', C=1)</tt> which is quite more complex than <tt>LinearSVC</tt>.
 Our best result was about **51%**. Undoubtedly, one can get a little bit better score after tuning parameters for HOG descriptor and SVC classifier.
-See the additional remarks at the end of the notebook [Classification using HOG features.ipynb](Classification using HOG features.ipynb).
-
-
+See the additional remarks at the end of the notebook [Classification_using_HOG_features.ipynb](Classification_using_HOG_features.ipynb).

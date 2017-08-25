@@ -3,4 +3,7 @@ scipy
 pandas
 scikit-learn
 tensorflow
+tensorflow-gpu
 urllib3
+opencv-python
+skimage
