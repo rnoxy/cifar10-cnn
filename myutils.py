@@ -24,7 +24,7 @@ CIFAR_TESTING_FILENAMES = [os.path.join(CIFAR_DIR_PATH, CIFAR_FOLDERNAME, 'test_
 def read_CIFAR_files(filenames):
     """
     Return the CIFAR dataset loaded from the bunch of files.
-    
+
     Keyword arguments:
     filenames -- the list of filenames (strings)
     """
@@ -82,8 +82,12 @@ def load_CIFAR_dataset(shuffle=True):
         filepath = os.path.join(CIFAR_DIR_PATH, filename)
         # try to download the file
         try:
-            logging.info("Downloading file {f}. This may take some time.".format(f=CIFAR_DATA_URL))
-            fpath, _ = urllib.request.urlretrieve(CIFAR_DATA_URL, filepath)
+            import sys
+            def _progress(cnt,blck_size,total_size):
+                sys.stdout.write('\r>> Downloading file %s (%3.1f%%)' % (filename, 100.0*cnt*blck_size/total_size))
+                sys.stdout.flush()
+            logging.info("Downloading file {f}".format(f=CIFAR_DATA_URL))
+            fpath, _ = urllib.request.urlretrieve(CIFAR_DATA_URL, filepath, reporthook=_progress)
             statinfo = os.stat(fpath)
             size = statinfo.st_size
         except:
