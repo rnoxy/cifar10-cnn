@@ -93,3 +93,9 @@ when using linear classifier.
 
 The notebook [Classification_using_CNN_codes.ipynb](Classification_using_CNN_codes.ipynb)
 presents the results using linear classifiers on top of all the considered pretrained models.
+
+## Ensemble learning
+Finally, on top of our classifiers we can try to use ensemble learning in order to achieve
+a little bit better score in our classication problem.
+Please, see the last section in the notebook [Classification_using_CNN_codes.ipynb](Classification_using_CNN_codes.ipynb)
+for considered ensebled methods. Let us only note, that we get **>90%** score.
