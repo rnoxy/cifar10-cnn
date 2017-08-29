@@ -7,3 +7,4 @@ tensorflow-gpu
 urllib3
 opencv-python
 skimage
+keras
