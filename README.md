@@ -68,13 +68,31 @@ The examples CNN models trained on huge database --- ImageNET (14*10^6 images, 1
 can be found in *tensorflow project* [github repo](https://github.com/tensorflow/models/tree/master/slim#pre-trained-models)
 
 Here we used the first approach. More precisely, we extracted the CNN codes of CIFAR10 training and testing
-images using the following networks (all pretrained on ImageNET)
+images using the following networks (all pretrained on ImageNET):
 - ResNET50
 - VGG16
 - VGG19
 - Inception v3
+
+### Feature extraction using keras
 The notebook [Feature_extraction_using_keras.ipynb](Feature_extraction_using_keras.ipynb)
 provides the python code for the extraction process. All the CNN models (pretrained as well)
 are available via [keras](https://keras.io/) library. In our case the extraction used [TensorFlow](https://www.tensorflow.org/) backend.
 
 Our hardware setup is GPU (nVIDIA GTX 1050 Ti 4GB). Everything worked in *Ubuntu 17.04*.
+All the models above give the accuracy about **82-85%** on testing dataset.
+
+### Feature extraction using TensorFlow
+We also used the TensorFlow checkpoint of *Inception v3* network
+available with the URL
+http://download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz
+
+The archive contains the file `classify_image_graph_def.pb` with pretrained Inception_v3 network,
+which has different weights than [Inception_v3](https://keras.io/applications/#inceptionv3)
+model in <tt>keras.applications</tt>.
+The most attractive is that extracted features can yield about **89%** accuracy
+when using linear classifier.
+
+
+The notebook [Classification_using_CNN_codes.ipynb](Classification_using_CNN_codes.ipynb)
+presents the results using linear classifiers on top of all the considered pretrained models.
