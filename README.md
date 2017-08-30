@@ -130,4 +130,5 @@ a little bit better score in our classication problem.
 
 Please, see the the notebook [Ensemble_learning.ipynb](Ensemble_learning.ipynb)
 for more deatails and results obtained by ensembling.
-Let us only note, that we get **92.84%** accuracy score by using *average voting*.
+Let us only note, that *stacking* our best two models didn't give better result.
+The best was **92.84%** --- obtained by using *average voting*.
