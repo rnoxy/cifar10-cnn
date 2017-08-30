@@ -77,26 +77,57 @@ provides the python code for the extraction process. All the CNN models (pretrai
 are available via [keras](https://keras.io/) library. In our case the extraction used [TensorFlow](https://www.tensorflow.org/) backend.
 
 Our hardware setup is GPU (nVIDIA GTX 1050 Ti 4GB). Everything worked in *Ubuntu 17.04*.
-All the models above give the accuracy about **82-85%** on testing dataset.
+All the models above give the accuracy range **70--91%** on testing dataset.
+The best result (**91.58%**) was achieved by classification of the features extracted using *ResNET50* network.
 
-### Feature extraction using TensorFlow
+We used both PCA and tSNE decompositions into 2 dimensions in order to visualize the features.
+The figure below presents the tSNE visualization of features extracted by ResNET50 network
+
+<img src="img/cifar10-inception_v3-tSNE.png" width="450">
+
+### Feature extraction using Inception_v3 from TensorFlow
 We also used the TensorFlow checkpoint of *Inception v3* network
 available with the URL
 http://download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz
 
-The archive contains the file `classify_image_graph_def.pb` with pretrained Inception_v3 network,
-which has different weights than [Inception_v3](https://keras.io/applications/#inceptionv3)
-model in <tt>keras.applications</tt>.
-The most attractive is that extracted features can yield about **89%** accuracy
-when using linear classifier.
+The archive contains the file `classify_image_graph_def.pb` with Inception_v3 network
+(also pretrained on ImageNET), which has different weights than [Inception_v3](https://keras.io/applications/#inceptionv3)
+model from [`keras.applications`](https://keras.io/applications/)
+We obtained accuracy about **90.61%**, which much more than the accuracy
+yielded by the classifiers on top [Inception_v3](https://keras.io/applications/#inceptionv3)
+model from [`keras.applications`](https://keras.io/applications/).
 
+All the the results (with more details) can be found in the notebook
+[Classification_using_CNN_codes.ipynb](Classification_using_CNN_codes.ipynb)
 
-The notebook [Classification_using_CNN_codes.ipynb](Classification_using_CNN_codes.ipynb)
-presents the results using linear classifiers on top of all the considered pretrained models.
+One can find there the following table with accuracy
+
+<pre>
+                                  Model accuracy
+  -----------------------------------------------------------------------------
+    C     | vgg16-keras | vgg19-keras | resnet50-keras | incv3-keras | Inception_v3
+    ------------------------------------------------------------------------------------
+  0.0001  |     8515    |     8633    |     9043       |    7244     |    8860
+  0.001   |     8528    |     8654    |     <b>9158</b>       |    7577     |    9005
+  0.01    |     8521    |     8644    |     9130       |    7604     |    9061
+  0.1     |     8519    |     8615    |     9009       |    7461     |    8959
+  0.5     |     7992    |     8014    |     8858       |    7409     |    8834
+  1.0     |     8211    |     8225    |     8853       |    7369     |    8776
+  1.2     |     8156    |     8335    |     8871       |    7357     |    8772
+  1.5     |     8172    |     8022    |     8852       |    7318     |    8762
+  2.0     |     7609    |     8256    |     8870       |    7281     |    8736
+ 10.0     |     7799    |     7580    |     8774       |    7042     |    8709
+</pre>
+The best result (**91.58%**) was obtained using pretrained **ResNET50 model**.
+The following figure shows the cats predicted to be planes.
+
+<img src="img/cifar10-cat_predicted_to_be_planes.png" width="80%">
+
 
 ## Ensemble learning
-Finally, on top of our classifiers we can try to use ensemble learning in order to achieve
+Finally, we tried ensemble learning in order to achieve
 a little bit better score in our classication problem.
+
 Please, see the the notebook [Ensemble_learning.ipynb](Ensemble_learning.ipynb)
 for more deatails and results obtained by ensembling.
-Let us only note, that we get **>90%** accuracy score.
+Let us only note, that we get **92.84%** accuracy score by using *average voting*.
