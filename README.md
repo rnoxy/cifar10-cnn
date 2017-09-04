@@ -24,7 +24,7 @@ The `iPython` notebook
 [CIFAR10-visualization.ipynb](CIFAR10-visualization.ipynb)
 presents some examples images from each of 10 classes in CIFAR10.
 
-<img style=src="img/cifar10-examples.png" width="450" alt="10 random examples from each class in CIFAR10 dataset">
+<img src="img/cifar10-examples.png" width="450" alt="10 random examples from each class in CIFAR10 dataset">
 
 ## Classification
 In our case, the classification problem means the supervised learning using only the **training** data (50000 images of CIFAR10).
