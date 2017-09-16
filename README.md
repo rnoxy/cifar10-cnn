@@ -81,9 +81,9 @@ All the models above give the accuracy range **70--91%** on testing dataset.
 The best result (**91.58%**) was achieved by classification of the features extracted using *ResNET50* network.
 
 We used both PCA and tSNE decompositions into 2 dimensions in order to visualize the features.
-The figure below presents the tSNE visualization of features extracted by ResNET50 network
+The figure below presents the tSNE visualization of features extracted by fine-tuned ResNET50 network
 
-<img src="img/cifar10-inception_v3-tSNE.png" width="450">
+<img src="img/cifar10-Resnet50_finetuned-tSNE.png" width="450">
 
 ### Feature extraction using Inception_v3 from TensorFlow
 We also used the TensorFlow checkpoint of *Inception v3* network
